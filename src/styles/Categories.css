@@ -1,0 +1,14 @@
+.cat-out {
+  display: flex;
+  padding: 0 10px;
+  gap: 45px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cat {
+  border-radius: 100%;
+}
+.cat > img {
+  width: 60px;
+  height: 60px;
+}

@@ -1,0 +1,22 @@
+.nav-icons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.logo {
+  width: 45px;
+  height: 45px;
+}
+.nav-icons > a > img {
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.nav-icons > a > img:hover {
+  background-color: #e0e0e073;
+  filter: grayscale(0%) brightness(1) invert(0) sepia(1) hue-rotate(-30deg);
+}
+.nav-icons > a > img {
+  width: 20px;
+  height: 20px;
+}

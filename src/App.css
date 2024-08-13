@@ -1,38 +1,68 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --bg-color: ;
+  --color: rgb(116, 116, 116);
+  --active: orange;
+  --orange: #f97316;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  /* background-color: #fafafa; */
+  color: var(--color);
+  font-family: Inter;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  text-decoration: none;
+  /* color: orangered; */
+  color: var(--color);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav {
+  margin-top: 10px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px 10vw;
+  margin-bottom: 15px;
   align-items: center;
+}
+.nav-links {
+  display: flex;
+  gap: 5vw;
+}
+.logo {
+  /* flex:0.5; */
+  color: var(--active);
+}
+.search {
+  cursor: pointer;
+  background-color: rgb(237, 237, 237);
+  border-radius: 4px;
+  border: none;
+  height: 36px;
+  margin-left: 5vw;
+  width: 300px;
+  padding: 0 20px;
+  outline: none;
+  /* outline: 1px solid orange; */
+}
+.search:focus {
+  outline: 2px solid var(--active);
+  background-color: white;
+  color: var(--active);
+}
+.g-10 {
+  gap: 10px;
+}
+.d-f {
+  display: flex;
+}
+.j-c {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.fd-c {
+  flex-direction: column;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.a-c {
+  align-items: center;
 }
