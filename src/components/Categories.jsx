@@ -6,30 +6,22 @@ import cat2 from "../images/cat2.avif";
 const Categories = () => {
   return (
     <div class="cat-out">
-      <div class="cat">
-        <img src={cat1} alt="Cat1 Img" />
-        <p>Electronics</p>
-      </div>
-      <div class="cat">
-        <img src={cat2} alt="" />
-        <p>Fashion</p>
-      </div>
-      <div class="cat">
-        <img src={cat1} alt="" />
-        <p>Furniture</p>
-      </div>
-      <div class="cat">
-        <img src={cat2} alt="" />
-        <p>Grocery</p>
-      </div>
-      <div class="cat">
-        <img src={cat1} alt="" />
-        <p>Beauty</p>
-      </div>
-      <div class="cat">
-        <img src={cat2} alt="" />
-        <p>Fashion</p>
-      </div>
+      {[
+        "Electronics",
+        "Fashion",
+        "Furniture",
+        "Grocery",
+        "Beauty",
+        "Fashion",
+        "Furniture",
+        "Grocery",
+        "Beauty",
+      ].map((i, index) => (
+        <div class="cat">
+          <img src={index % 2 != 0 ? cat1 : cat2} alt="Cat1 Img" />
+          <p>{i}</p>
+        </div>
+      ))}
     </div>
   );
 };

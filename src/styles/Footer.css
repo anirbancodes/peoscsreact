@@ -1,12 +1,12 @@
 .footer {
-  margin-top: 60px;
-}
-
-.footer {
-  background-color: rgb(218, 218, 218);
+  background-color: rgb(232, 232, 232);
   display: flex;
   gap: 60px;
+  color: rgb(157, 157, 157);
   padding: 10px 30px 40px 30px;
+  font-weight: 300;
+  font-size: small;
+  margin-top: 60px;
 }
 .f-sec1 {
   display: flex;
@@ -16,6 +16,9 @@
 .f-sec1-in {
   display: flex;
   flex-direction: column;
+}
+.f-sec1-in > a {
+  color: rgb(157, 157, 157);
 }
 input {
   cursor: pointer;
@@ -31,3 +34,12 @@ input:focus {
   background-color: white;
   color: var(--active);
 }
+
+.last-icons {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+}
+/* img {
+  width: 100%;
+} */

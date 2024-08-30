@@ -2,9 +2,8 @@ import React from "react";
 import "../styles/Login.css";
 import HeroPic from "../images/undraw_login_re_4vu2.svg";
 import GoogleLogo from "../images/google.svg";
-import { Link } from "react-router-dom";
 
-const Login = () => {
+const Signup = () => {
   return (
     <div id="signin" class="d-f j-c a-c fd-c out-body">
       <img
@@ -31,16 +30,14 @@ const Login = () => {
         <p>Password</p>
         <input type="password" id="password" />
         <p></p>
-        <div class="btn">Login</div>
+        <div class="btn">Signup</div>
       </div>
 
-      <Link to={"/sign"}>
-        <p>
-          Don't have an account? <u>Sign up here</u>
-        </p>
-      </Link>
+      <p>
+        Already have an account? <u>Login here</u>
+      </p>
     </div>
   );
 };
 
-export default Login;
+export default Signup;

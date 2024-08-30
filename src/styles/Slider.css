@@ -1,0 +1,16 @@
+.slide-btn {
+  position: absolute;
+  top: 25%;
+  font-size: 25px;
+  background-color: rgba(255, 255, 255, 0.144);
+  color: rgba(201, 197, 197, 0.671);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.outer-div {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 20px;
+}

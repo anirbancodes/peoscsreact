@@ -5,18 +5,31 @@ import Login from "./components/Login";
 import Product from "./components/Product";
 import Home from "./containers/Home";
 import ProductPage from "./containers/ProductPage";
+import Signup from "./components/Signup";
+import OrderDetails from "./components/OrderDetails";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <div>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/product" element={<ProductPage />} />
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign" element={<Signup />} />
+          <Route
+            path="/order-details"
+            element={
+              <>
+                <Navbar />
+                <OrderDetails />
+                <Footer />
+              </>
+            }
+          />
+          <Route path="/product" element={<ProductPage />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
       </Router>
     </div>
   );

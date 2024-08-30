@@ -1,11 +1,29 @@
+.nav {
+  margin-bottom: 15px;
+}
+
+.nav-in {
+  margin-top: 0px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10vw;
+  margin-bottom: -10px;
+  align-items: center;
+}
+.nav-links {
+  display: flex;
+  gap: 5vw;
+}
+
 .nav-icons {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
 .logo {
-  width: 45px;
-  height: 45px;
+  width: 90px;
+  height: 30px;
+  border-radius: 0;
 }
 .nav-icons > a > img {
   padding: 10px;
@@ -19,4 +37,7 @@
 .nav-icons > a > img {
   width: 20px;
   height: 20px;
+}
+hr {
+  border: 1px solid rgba(236, 236, 236, 0.667);
 }

@@ -18,18 +18,7 @@ a {
   /* color: orangered; */
   color: var(--color);
 }
-.nav {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 10vw;
-  margin-bottom: 15px;
-  align-items: center;
-}
-.nav-links {
-  display: flex;
-  gap: 5vw;
-}
+
 .logo {
   /* flex:0.5; */
   color: var(--active);
