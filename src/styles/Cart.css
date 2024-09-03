@@ -1,0 +1,37 @@
+.cart {
+  background-color: rgb(49, 49, 49);
+  background-image: url("../assets/gradient2048.avif");
+  padding: 10px 30px;
+  color: white;
+}
+.cart-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.subtotal {
+  text-align: end;
+  font-size: 20px;
+}
+.payment-button {
+  display: flex;
+  justify-content: center;
+}
+.proceed-to-pay {
+  padding: 20px;
+  width: 40%;
+  opacity: 60%;
+  color: rgb(53, 13, 67);
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+.proceed-to-pay:hover {
+  background-color: white;
+  color: rgb(112, 18, 112);
+  opacity: 100%;
+  transition: 0.5s ease-in;
+}

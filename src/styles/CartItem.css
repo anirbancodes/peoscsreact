@@ -1,0 +1,28 @@
+.cart-item {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+.cart-item-desc {
+  display: flex;
+  flex-direction: column;
+  flex: 0.9;
+}
+
+.cart-item-qty-div {
+  display: flex;
+  gap: 20px;
+}
+.cart-item-qty-minus,
+.cart-item-qty-plus,
+.cart-item-delete {
+  padding: 5px 20px;
+  background-color: white;
+  border: none;
+  color: purple;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.cart-item-value {
+  text-align: end;
+}

@@ -4,6 +4,7 @@ import "../styles/HeroProducts.css";
 import hp1 from "../images/wear/hp1.avif";
 import hp2 from "../images/wear/hp2.avif";
 import hp3 from "../images/wear/hp3.avif";
+import bg from "../assets/gradient2048.avif";
 import { Link } from "react-router-dom";
 
 const HeroProducts = ({ catName }) => {
@@ -11,7 +12,20 @@ const HeroProducts = ({ catName }) => {
   // useEffect()
 
   return (
-    <div style={{ backgroundColor: "black" }}>
+    <div
+      style={{
+        // backgroundColor: "black",
+        backgroundImage: `url(${bg})`,
+        display: "block",
+        width: "100%",
+        height: "100%",
+        borderRadius: "inherit",
+        objectPosition: "center",
+        objectFit: "cover",
+        // backgroundRepeat: "no-repeat",
+        // filter: "blur(12px)",
+      }}
+    >
       <h3
         style={{
           marginLeft: "70px",

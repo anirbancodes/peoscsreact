@@ -10,6 +10,7 @@ import OrderDetails from "./components/OrderDetails";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SearchResults from "./containers/SearchResults";
+import CartPage from "./containers/CartPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/results" element={<SearchResults />} />
           <Route path="/product" element={<ProductPage />} />
           <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </Router>
     </div>
