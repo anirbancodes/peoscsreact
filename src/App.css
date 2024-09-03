@@ -25,7 +25,7 @@ a {
 }
 .search {
   cursor: pointer;
-  background-color: rgb(237, 237, 237);
+  background-color: rgba(61, 65, 96, 0.591);
   border-radius: 4px;
   border: none;
   height: 36px;
@@ -33,6 +33,7 @@ a {
   width: 300px;
   padding: 0 20px;
   outline: none;
+  color: white;
   /* outline: 1px solid orange; */
 }
 .search:focus {

@@ -1,7 +1,8 @@
 .footer {
-  background-color: rgb(232, 232, 232);
+  /* background-color: rgb(232, 232, 232); */
+  background-color: black !important;
   display: flex;
-  gap: 60px;
+  gap: 10px;
   color: rgb(157, 157, 157);
   padding: 10px 30px 40px 30px;
   font-weight: 300;

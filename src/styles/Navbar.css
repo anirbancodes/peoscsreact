@@ -1,13 +1,14 @@
 .nav {
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
+  padding-top: 10px;
+  background-color: black;
 }
 
 .nav-in {
-  margin-top: 0px;
   display: flex;
   justify-content: space-between;
   padding: 5px 10vw;
-  margin-bottom: -10px;
+  /* margin-bottom: -10px; */
   align-items: center;
 }
 .nav-links {
@@ -33,6 +34,7 @@
 .nav-icons > a > img:hover {
   background-color: #e0e0e073;
   filter: grayscale(0%) brightness(1) invert(0) sepia(1) hue-rotate(-30deg);
+  filter: grayscale(0%) brightness(1) invert(0) sepia(0.5) hue-rotate(180deg);
 }
 .nav-icons > a > img {
   width: 20px;

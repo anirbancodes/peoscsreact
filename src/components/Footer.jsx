@@ -9,6 +9,7 @@ import pay1Icon from "../images/flipkart/pay/1.svg";
 import fbIcon from "../images/icons/flip/fb.svg";
 import xIcon from "../images/icons/flip/x.svg";
 import ytIcon from "../images/icons/flip/yt.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -16,24 +17,24 @@ const Footer = () => {
       <div class="f-sec1 g-10">
         <p>About</p>
         <div class="f-sec1-in">
-          <a href="">Contact</a>
-          <a href="">About Us</a>
-          <a href="">Careers</a>
+          <Link to="">Contact</Link>
+          <Link to="">About Us</Link>
+          <Link to="">Careers</Link>
         </div>
       </div>
       <div class="f-sec1 g-10">
         <p>About</p>
         <div class="f-sec1-in">
-          <a href="">Contact</a>
-          <a href="">About Us</a>
-          <a href="">Careers</a>
+          <Link to="">Contact</Link>
+          <Link to="">About Us</Link>
+          <Link to="">Careers</Link>
         </div>
       </div>
       <div
         class="f-sec1"
         style={{
           borderLeft: "1px solid rgba(184, 184, 184, 0.683)",
-          paddingLeft: "30px",
+          paddingLeft: "20px",
         }}
       >
         <p>Mail Us:</p>

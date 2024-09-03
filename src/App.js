@@ -2,13 +2,14 @@ import logo from "./logo.png";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Login from "./components/Login";
-import Product from "./components/Product";
+
 import Home from "./containers/Home";
 import ProductPage from "./containers/ProductPage";
 import Signup from "./components/Signup";
 import OrderDetails from "./components/OrderDetails";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import SearchResults from "./containers/SearchResults";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               </>
             }
           />
+          <Route path="/results" element={<SearchResults />} />
           <Route path="/product" element={<ProductPage />} />
           <Route path="/" element={<Home />} />
         </Routes>

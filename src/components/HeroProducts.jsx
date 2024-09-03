@@ -11,7 +11,7 @@ const HeroProducts = ({ catName }) => {
   // useEffect()
 
   return (
-    <>
+    <div style={{ backgroundColor: "black" }}>
       <h3
         style={{
           marginLeft: "70px",
@@ -44,13 +44,13 @@ const HeroProducts = ({ catName }) => {
                   </div>
                 </div>
               </div>
-              <hr />
-              <div class="add-cart">Add to cart</div>
+              {/* <hr /> */}
+              {/* <div class="add-cart">Add to cart</div> */}
             </Link>
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

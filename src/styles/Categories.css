@@ -1,14 +1,21 @@
 .cat-out {
   display: flex;
   padding: 0 10px;
-  gap: 45px;
+  gap: 40px;
   justify-content: center;
   flex-wrap: wrap;
 }
 .cat {
   border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 10px;
 }
 .cat > img {
   width: 60px;
   height: 60px;
+}
+p {
+  color: rgba(255, 255, 255, 0.667);
 }
