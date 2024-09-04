@@ -7,7 +7,11 @@ const Navbar = () => {
   return (
     <div class="nav">
       <div class="nav-in">
-        <img class="logo" src={logo} alt="Logo" />
+        <Link to={"/"}>
+          {" "}
+          <img class="logo" src={logo} alt="Logo" />
+        </Link>
+
         {/* <div class="nav-links">
         <a href="">Link</a>
         <a href="">Link</a>
@@ -19,16 +23,17 @@ const Navbar = () => {
         />
 
         <div class="nav-icons">
-          <a href="">
+          <a href="/admin">
             <img src="/icons/heart.png" alt="" />
           </a>
+
           <Link to="/cart">
             <img src="/icons/cart.png" alt="" />
           </Link>
           <a href="/order-details">
             <img src="/icons/bell.png" alt="" />
           </a>
-          <Link to="/login">
+          <Link to="/profile">
             <img src="/icons/user.png" alt="" />
           </Link>
         </div>

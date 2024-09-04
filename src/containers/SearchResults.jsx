@@ -35,7 +35,6 @@ const SearchResults = () => {
                 <div class="product-desc">
                   <p
                     style={{
-                      color: "white",
                       height: "25px",
                     }}
                   >
@@ -43,7 +42,7 @@ const SearchResults = () => {
                   </p>
 
                   <div class="product-desc-price">
-                    <p style={{ color: "white" }}>₹{item.price}</p>
+                    <p>₹{item.price}</p>
                     <div>
                       <img class="add-wish" src="/icons/heart.png" alt="" />{" "}
                       {item.stockQuantity}

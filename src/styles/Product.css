@@ -11,6 +11,11 @@ p {
 .prod-photo {
   flex: 0.3;
 }
+.product-desc > p,
+.product-desc-price > p {
+  color: rgba(255, 255, 255, 0.808) !important;
+}
+
 .desc {
   display: flex;
   flex-direction: column;

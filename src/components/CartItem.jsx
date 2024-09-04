@@ -18,20 +18,51 @@ const CartItem = ({
       const newQty = prevDetails.qty + change;
       if (newQty < 1 || newQty > stock) return prevDetails; // Ensuring qty within range
 
+      fetch("http://localhost:5454/api/cart-items/" + id, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+        body: JSON.stringify({
+          newQuantity: newQty,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
       const newDetails = {
         qty: newQty,
         value: newQty * price,
       };
 
-      if (onQuantityChange) onQuantityChange(id, newQty); // Notify parent
+      // if (onQuantityChange) onQuantityChange(id, newQty); // Notify parent
       return newDetails;
     });
   };
 
   const handleRemove = (e) => {
     e.preventDefault();
+    fetch("http://localhost:5454/api/cart-items/" + id, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
     setIsVisible(false); // Hide the component
-    if (onRemove) onRemove(id); // Call the remove function passed as a prop
+    // if (onRemove) onRemove(id); // Call the remove function passed as a prop
   };
 
   if (!isVisible) return null;

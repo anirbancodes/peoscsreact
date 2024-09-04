@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Product.css";
 import hp3 from "../images/wear/hp3.avif";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../redux/cartSlice";
 
 const Product = () => {
@@ -14,6 +14,8 @@ const Product = () => {
     price: "",
     stockQuantity: "",
   });
+
+  let userId = useSelector((state) => state.user.userId);
 
   const dispatch = useDispatch();
 
@@ -38,11 +40,30 @@ const Product = () => {
       price: info.price,
       qty: 1, // Default quantity when adding to cart
     };
+    fetch("http://localhost:5454/api/cart-items", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        user: userId,
+        product: Number(new URL(window.location.href).searchParams.get("id")),
+        quantity: 1,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
 
     // Dispatch an action to update the cart in Redux
-    dispatch(setCart(cartItem));
+    // dispatch(setCart(cartItem));
 
-    console.log("Added to cart:", cartItem); // For debugging
+    console.log("Added to cart:", cartItem);
   };
 
   return (

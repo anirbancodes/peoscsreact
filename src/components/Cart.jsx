@@ -3,11 +3,11 @@ import "../styles/Cart.css";
 import CartItem from "./CartItem";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../redux/cartSlice";
+import { Link } from "react-router-dom";
 
 let tempArr = [];
 const Cart = () => {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.cart);
   let userId = useSelector((state) => state.user.userId);
 
   const [products, setProducts] = useState([]);
@@ -42,7 +42,7 @@ const Cart = () => {
     fetchData();
     // setProducts(tempArr);
     console.log(":", tempArr, products);
-  }, [userId, cart]);
+  }, [userId]);
 
   // function updateSubtotal() {
   //   let sum = 0;
@@ -98,9 +98,11 @@ const Cart = () => {
         <p className="subtotal">
           Subtotal ({products.length} items): ₹{subtotal.toFixed(2)}
         </p>
-        <div className="payment-button">
-          <button className="proceed-to-pay">Checkout</button>
-        </div>
+        <Link to="/checkout">
+          <div className="payment-button">
+            <button className="proceed-to-pay">Checkout</button>
+          </div>
+        </Link>
       </div>
     </div>
   );

@@ -11,6 +11,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SearchResults from "./containers/SearchResults";
 import CartPage from "./containers/CartPage";
+import Profile from "./containers/Profile";
+import Checkout from "./containers/Checkout";
+import { Admin } from "./containers/Admin";
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/sign" element={<Signup />} />
           <Route
             path="/order-details"
@@ -29,10 +33,12 @@ function App() {
               </>
             }
           />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/results" element={<SearchResults />} />
           <Route path="/product" element={<ProductPage />} />
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </Router>
     </div>

@@ -4,6 +4,7 @@ import "../styles/HeroText.css";
 import Slider from "../styles/Slider";
 import Categories from "./Categories";
 import HeroProducts from "./HeroProducts";
+import { Link } from "react-router-dom";
 
 const HeroText = () => {
   return (
@@ -53,8 +54,12 @@ const HeroText = () => {
               gap: "60px",
             }}
           >
-            <button className="hero-btn hero-btn-outline">Get Started</button>
-            <button className="hero-btn">Login</button>
+            <Link to="/sign">
+              <button className="hero-btn hero-btn-outline">Get Started</button>
+            </Link>
+            <Link to="/login">
+              <button className="hero-btn">Login</button>
+            </Link>
           </div>
         </div>
       </div>
