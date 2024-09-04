@@ -1,57 +1,91 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Product.css";
-
-import hp1 from "../images/wear/hp1.avif";
-import hp2 from "../images/wear/hp2.avif";
 import hp3 from "../images/wear/hp3.avif";
+import { useDispatch } from "react-redux";
+import { setCart } from "../redux/cartSlice";
 
 const Product = () => {
+  const [info, setInfo] = useState({
+    productName: "",
+    rating: "",
+    categoryId: "",
+    id: "",
+    description: "",
+    price: "",
+    stockQuantity: "",
+  });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const prodID = new URL(window.location.href).searchParams.get("id");
+    if (prodID) {
+      fetch(`http://localhost:5454/api/products/${prodID}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setInfo(data);
+        })
+        .catch((error) => console.error("Error fetching data:", error));
+    }
+  }, []);
+
+  const handleAddToCart = () => {
+    // Create a cart item object
+    const cartItem = {
+      id: info.id,
+      productName: info.productName,
+      price: info.price,
+      qty: 1, // Default quantity when adding to cart
+    };
+
+    // Dispatch an action to update the cart in Redux
+    dispatch(setCart(cartItem));
+
+    console.log("Added to cart:", cartItem); // For debugging
+  };
+
   return (
-    <div class="div">
-      <div class="prod-photo">
+    <div className="div">
+      <div className="prod-photo">
         <img src={hp3} alt="" />
       </div>
-      <div class="desc">
-        <div class="details">
+      <div className="desc">
+        <div className="details">
           <p
             style={{ color: "rgb(104, 104, 250)", textTransform: "uppercase" }}
           >
             Express Shipping
           </p>
-          <h3 style={{ color: "black" }}>US Polo Assn Denim Co.</h3>
-          <p>Utility Twill Shirt</p>
-          <div class="rating">
-            <div class="rating-inner1">
-              <p>4.3</p>
+          <h3 style={{ color: "black" }}>{info.productName}</h3>
+          <p>{info.description}</p>
+          <div className="rating">
+            <div className="rating-inner1">
+              <p>{info.rating}</p>
               <img style={{ width: "15px" }} src="/icons/bolt.svg" alt="" />
             </div>
-            <p>Based on 34 ratings</p>
+            <p>Based on user ratings</p>
           </div>
-          <div class="price">
-            <div class="price-inner1">
-              <h2 style={{ color: "black" }}>₹1,752</h2>
-              <h3 style={{ color: "green", fontWeight: 400 }}>27% Off</h3>
+          <div className="price">
+            <div className="price-inner1">
+              <h2 style={{ color: "black" }}>₹{info.price}</h2>
+              <h3 style={{ color: "green", fontWeight: 400 }}>25% Off</h3>
             </div>
-            <div class="price-inner2">
+            <div className="price-inner2">
               <p>
-                MRP ₹<strike>2,399</strike>
+                MRP ₹<strike>{(info.price / 0.75).toFixed(2)}</strike>
               </p>
               <p>Inc. of all taxes</p>
             </div>
           </div>
         </div>
-        <h3>Select Size</h3>
-        <div class="prod-options">
-          <div class="option">S</div>
-          <div class="option">M</div>
-        </div>
 
-        <div class="add-cart">
+        <div onClick={handleAddToCart} className="add-cart">
           <img src="/icons/heart.png" alt="" />
           <p>Add to Cart</p>
         </div>
       </div>
-      <div class="reviews">
+      <div className="reviews">
         <h3>Reviews & Ratings</h3>
         <p>No reviews yet</p>
       </div>

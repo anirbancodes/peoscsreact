@@ -1,6 +1,9 @@
 body {
   font-size: 14px;
 }
+p {
+  color: gray !important;
+}
 .div {
   display: flex;
   gap: 12px;
@@ -51,8 +54,13 @@ body {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  border: 1px solid rgb(189, 189, 189);
+  border: 1px solid rgba(189, 189, 189, 0.498);
   width: 220px;
+  height: 30px;
+  cursor: pointer;
+}
+.add-cart:hover {
+  height: 30px;
 }
 .add-cart > img {
   width: 20px;

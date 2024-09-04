@@ -22,10 +22,10 @@ const Navbar = () => {
           <a href="">
             <img src="/icons/heart.png" alt="" />
           </a>
-          <Link to="/order-details">
+          <Link to="/cart">
             <img src="/icons/cart.png" alt="" />
           </Link>
-          <a href="">
+          <a href="/order-details">
             <img src="/icons/bell.png" alt="" />
           </a>
           <Link to="/login">

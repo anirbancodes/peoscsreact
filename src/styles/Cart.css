@@ -1,6 +1,6 @@
 .cart {
   background-color: rgb(49, 49, 49);
-  background-image: url("../assets/gradient2048.avif");
+  background-image: url("../assets/cropped-gradient2048Copy.avif");
   padding: 10px 30px;
   color: white;
 }
@@ -13,6 +13,7 @@
 .subtotal {
   text-align: end;
   font-size: 20px;
+  color: white;
 }
 .payment-button {
   display: flex;

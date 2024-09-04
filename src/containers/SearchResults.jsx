@@ -30,20 +30,28 @@ const SearchResults = () => {
         {products.map((item, index) => {
           return (
             <div key={index}>
-              <Link to="/product" class="product">
+              <Link to={"/product?id=" + item.id} class="product">
                 <img src={hp2} alt="" />
                 <div class="product-desc">
-                  <p>{item.productName}</p>
+                  <p
+                    style={{
+                      color: "white",
+                      height: "25px",
+                    }}
+                  >
+                    {item.productName}
+                  </p>
+
                   <div class="product-desc-price">
-                    <p>₹{item.price}</p>
+                    <p style={{ color: "white" }}>₹{item.price}</p>
                     <div>
                       <img class="add-wish" src="/icons/heart.png" alt="" />{" "}
                       {item.stockQuantity}
                     </div>
                   </div>
                 </div>
-                <hr />
-                <div class="add-cart">Add to cart</div>
+                {/* <hr /> */}
+                {/* <div class="add-cart">Add to cart</div> */}
               </Link>
             </div>
           );

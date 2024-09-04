@@ -1,14 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Cart.css";
 import CartItem from "./CartItem";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../redux/cartSlice";
 
+let tempArr = [];
 const Cart = () => {
-  const [products, setProducts] = useState([
-    { id: 1, name: "Anirrrrr Debbbb", price: 399, stock: 10, qty: 1 },
-    { id: 2, name: "Anirrrrr Debbbb", price: 399, stock: 10, qty: 1 },
-    { id: 3, name: "Anirrrrr Debbbb", price: 399, stock: 10, qty: 1 },
-  ]);
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
+  let userId = useSelector((state) => state.user.userId);
+
+  const [products, setProducts] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
+
+  useEffect(() => {
+    function fetchData() {
+      console.log(userId);
+      fetch("http://localhost:5454/api/cart-items/user/" + userId)
+        .then((res) => res.json())
+        .then((cartItems) => {
+          const productPromises = cartItems?.map((item) => {
+            return fetch("http://localhost:5454/api/products/" + item.product)
+              .then((res) => res.json())
+              .then((productData) => ({
+                id: item.id,
+                qty: item.quantity,
+                stock: productData.stockQuantity,
+                price: productData.price,
+                name: productData.productName,
+              }));
+          });
+
+          Promise.all(productPromises).then((fetchedProducts) => {
+            setProducts(fetchedProducts);
+            updateSubtotal(fetchedProducts);
+            // updateSubtotal(fetchedProducts);
+          });
+        })
+        .catch((error) => console.error("Error fetching data:", error));
+    }
+    fetchData();
+    // setProducts(tempArr);
+    console.log(":", tempArr, products);
+  }, [userId, cart]);
+
+  // function updateSubtotal() {
+  //   let sum = 0;
+  //   products.map((item) => (sum += item.quantity * item.price));
+  //   setSubtotal(sum);
+  // }
 
   const updateQuantity = (id, newQty) => {
     setProducts((prevProducts) => {
