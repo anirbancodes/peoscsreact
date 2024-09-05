@@ -26,7 +26,7 @@ const SearchResults = () => {
     <>
       <Navbar />
       {/* Filters */}
-      <div style={{ display: "flex", gap: "20px" }}>
+      <div style={{ display: "flex", gap: "20px", padding: "10px 45px" }}>
         {products.map((item, index) => {
           return (
             <div key={index}>
@@ -43,7 +43,13 @@ const SearchResults = () => {
 
                   <div class="product-desc-price">
                     <p>₹{item.price}</p>
-                    <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                      }}
+                    >
                       <img class="add-wish" src="/icons/heart.png" alt="" />{" "}
                       {item.stockQuantity}
                     </div>

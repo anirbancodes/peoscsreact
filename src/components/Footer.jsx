@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div class="footer">
-      <div class="f-sec1 g-10">
+      <div class="f-sec1 g-10" style={{ marginLeft: "15px" }}>
         <p>About</p>
         <div class="f-sec1-in">
           <Link to="">Contact</Link>
@@ -82,7 +82,7 @@ const Footer = () => {
           <img src={giftIcon} alt="" />
           <p>Gift cards</p>
         </div>
-        <img src={pay1Icon} alt="" />
+        <img style={{ transform: "scaleX(0.9)" }} src={pay1Icon} alt="" />
       </div>
     </div>
   );

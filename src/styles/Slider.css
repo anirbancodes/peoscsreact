@@ -1,11 +1,19 @@
 .slide-btn {
   position: absolute;
-  top: 25%;
+  top: 15%;
   font-size: 25px;
-  background-color: rgba(255, 255, 255, 0.144);
-  color: rgba(201, 197, 197, 0.671);
+  background-color: rgba(255, 255, 255, 0.578);
+  background-color: rgb(8, 1, 71);
+  color: rgb(255, 254, 254);
   padding: 5px 10px;
   cursor: pointer;
+  opacity: 50%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+}
+.slide-btn:hover {
+  opacity: 80%;
 }
 
 .outer-div {

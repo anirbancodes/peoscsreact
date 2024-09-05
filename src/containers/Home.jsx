@@ -12,9 +12,11 @@ const Home = () => {
     <>
       <Navbar />
       <HeroText />
-      <HeroProducts catName={"Fashion"} />
-      {/* <Slider />
+      <div style={{ height: "30px" }}></div>
+      <Slider />
       <Categories />
+      <HeroProducts catName={"Fashion"} />
+      {/* 
       <HeroProducts catName={"Fashion"} />
       <HeroProducts catName={"Electronics"} />
       <HeroProducts catName={"Furniture"} /> */}

@@ -84,7 +84,6 @@ const Cart = () => {
       <div className="cart-body">
         {products.map((product) => (
           <CartItem
-            key={product.id}
             id={product.id}
             name={product.name}
             price={product.price}
@@ -95,10 +94,10 @@ const Cart = () => {
           />
         ))}
         <hr />
-        <p className="subtotal">
+        <h5 className="subtotal">
           Subtotal ({products.length} items): ₹{subtotal.toFixed(2)}
-        </p>
-        <Link to="/checkout">
+        </h5>
+        <Link to={"/checkout?t=" + subtotal}>
           <div className="payment-button">
             <button className="proceed-to-pay">Checkout</button>
           </div>

@@ -11,7 +11,7 @@ const HeroProducts = ({ catName }) => {
   // useEffect()
 
   return (
-    <div style={{ backgroundColor: "black" }}>
+    <div style={{}}>
       <h3
         style={{
           marginLeft: "70px",

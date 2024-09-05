@@ -2,10 +2,17 @@ import React from "react";
 import "../styles/Navbar.css";
 import { Link } from "react-router-dom";
 import logo from "../images/logo2.png";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
+  let userId = useSelector((state) => state.user.userId);
   return (
-    <div class="nav">
+    <div
+      class="nav"
+      style={{
+        backgroundColor: userId ? "white" : "black",
+      }}
+    >
       <div class="nav-in">
         <Link to={"/"}>
           {" "}

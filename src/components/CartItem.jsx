@@ -6,6 +6,7 @@ const CartItem = ({
   name,
   stock,
   qty,
+
   price,
   onQuantityChange,
   onRemove,
@@ -13,7 +14,7 @@ const CartItem = ({
   const [details, setDetails] = useState({ qty, value: qty * price });
   const [isVisible, setIsVisible] = useState(true);
 
-  const handleQuantityChange = (change) => {
+  /* const handleQuantityChange = (change) => {
     setDetails((prevDetails) => {
       const newQty = prevDetails.qty + change;
       if (newQty < 1 || newQty > stock) return prevDetails; // Ensuring qty within range
@@ -25,7 +26,7 @@ const CartItem = ({
         },
         method: "PUT",
         body: JSON.stringify({
-          newQuantity: newQty,
+          newQuantity: Number(newQty),
         }),
       })
         .then((response) => response.json())
@@ -41,6 +42,44 @@ const CartItem = ({
       };
 
       // if (onQuantityChange) onQuantityChange(id, newQty); // Notify parent
+      return newDetails;
+    });
+  }; */
+  const handleQuantityChange = (change) => {
+    setDetails((prevDetails) => {
+      const newQty = prevDetails.qty + change;
+      if (newQty < 1 || newQty > stock) return prevDetails; // Ensuring qty within range
+
+      fetch("http://localhost:5454/api/cart-items/" + id, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+        body: JSON.stringify({
+          newQuantity: newQty,
+        }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Success:", data);
+          // Call the onQuantityChange if available
+          if (onQuantityChange) onQuantityChange(id, newQty);
+        })
+        .catch((error) => {
+          console.error("Error:", error.message);
+        });
+
+      const newDetails = {
+        qty: newQty,
+        value: newQty * price,
+      };
+
       return newDetails;
     });
   };
@@ -68,7 +107,7 @@ const CartItem = ({
   if (!isVisible) return null;
 
   return (
-    <div className="cart-item">
+    <div key={id} className="cart-item">
       <img
         src="https://cdn.dummyjson.com/products/images/groceries/Green%20Chili%20Pepper/thumbnail.png"
         alt={name}
