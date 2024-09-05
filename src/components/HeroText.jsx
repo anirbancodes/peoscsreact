@@ -72,6 +72,11 @@ const HeroText = () => {
                     <button className="hero-btn">Login</button>
                   </Link>
                 </div>
+                <div
+                  style={{
+                    height: "60px",
+                  }}
+                ></div>
               </div>
               <div
                 style={{

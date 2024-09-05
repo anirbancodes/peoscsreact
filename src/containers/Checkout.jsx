@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Checkout = () => {
   let userId = useSelector((state) => state.user.userId);
+  if (!userId) userId = -1;
   const navigate = useNavigate();
   const [info, setInfo] = useState({
     name: "",

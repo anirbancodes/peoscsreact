@@ -10,7 +10,6 @@ const SearchResults = () => {
   useEffect(() => {
     let cat = new URL(document.location).searchParams.get("cat") || "";
     if (cat) {
-      cat -= 11;
       // https://bet.anirbandeb.cloud/login?r=match_close-pos-neg
       //  const redirectParam = params.split("_");
       //  let redirectLink = "";
@@ -39,7 +38,8 @@ const SearchResults = () => {
           return (
             <div key={index}>
               <Link to={"/product?id=" + item.id} class="product">
-                <img src={hp2} alt="" />
+                {/* <img src={hp2} alt="" /> */}
+                <img src={item.imageUrl} style={{ height: "180px" }} alt="" />
                 <div class="product-desc">
                   <p
                     style={{

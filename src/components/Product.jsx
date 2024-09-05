@@ -14,21 +14,31 @@ const Product = () => {
     price: "",
     stockQuantity: "",
   });
+  const [reviews, setReviews] = useState([]);
 
-  let userId = useSelector((state) => state.user.userId);
+  let userId = useSelector((state) => state.user.userId) || -1;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     const prodID = new URL(window.location.href).searchParams.get("id");
     if (prodID) {
-      fetch(`http://localhost:5454/api/products/${prodID}`)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setInfo(data);
+      const productFetch = fetch(
+        `http://localhost:5454/api/products/${prodID}`
+      ).then((res) => res.json());
+      const reviewsFetch = fetch(
+        `http://localhost:5454/api/reviews/product/${prodID}`
+      ).then((res) => res.json());
+
+      Promise.all([productFetch, reviewsFetch])
+        .then(([productData, reviewsData]) => {
+          setInfo(productData);
+          setReviews(reviewsData);
+          console.log(productData, "k", reviewsData);
         })
-        .catch((error) => console.error("Error fetching data:", error));
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
     }
   }, []);
 
@@ -69,7 +79,8 @@ const Product = () => {
   return (
     <div className="div">
       <div className="prod-photo">
-        <img src={hp3} alt="" />
+        {/* <img src={hp3} alt="" /> */}
+        <img src={info.imageUrl} style={{ width: "420px" }} alt="" />
       </div>
       <div className="desc">
         <div className="details">
@@ -108,7 +119,11 @@ const Product = () => {
       </div>
       <div className="reviews">
         <h3>Reviews & Ratings</h3>
-        <p>No reviews yet</p>
+        {!reviews && <p>No reviews yet</p>}
+        {reviews &&
+          reviews.map((item) => {
+            return <p>{item.review}</p>;
+          })}
       </div>
     </div>
   );

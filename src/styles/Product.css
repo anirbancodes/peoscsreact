@@ -9,7 +9,7 @@ p {
   gap: 12px;
 }
 .prod-photo {
-  flex: 0.3;
+  flex: 0.7;
 }
 .product-desc > p,
 .product-desc-price > p {
