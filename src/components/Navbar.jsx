@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Navbar.css";
 import { Link } from "react-router-dom";
 import logo from "../images/logo2.png";
 import { useDispatch, useSelector } from "react-redux";
+import SearchIcon from "../assets/search.png";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   let userId = useSelector((state) => state.user.userId);
+  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
+  function handleSearch() {
+    navigate("/results?query=" + searchText);
+  }
   return (
     <div
       class="nav"
@@ -23,11 +30,29 @@ const Navbar = () => {
         <a href="">Link</a>
         <a href="">Link</a>
       </div> */}
-        <input
-          type="text"
-          className="search"
-          placeholder="Search for iphone 13, mens tshirt, etc."
-        />
+        <div
+          className="search-div"
+          style={{ display: "flex", alignItems: "center", gap: "0px" }}
+        >
+          <input
+            type="text"
+            onChange={(e) => setSearchText(e.target.value)}
+            placeholder="Search for iphone 13, mens tshirt, etc."
+          />
+          <button
+            style={{
+              border: "none",
+              outline: "none",
+              backgroundColor: "white",
+              alignItems: "center",
+            }}
+            value={searchText}
+            className="search-btn"
+            onClick={handleSearch}
+          >
+            <img className="search-btn-img" src={SearchIcon} alt="Search" />
+          </button>
+        </div>
 
         <div class="nav-icons">
           <a href="/admin">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import OrderItem from "./OrderItem";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -18,34 +19,11 @@ const Orders = () => {
         padding: "20px",
         // background: "linear-gradient(135deg, #1b2b60, #461d55)",
         // color: "white",
+        backgroundColor: "orange",
       }}
     >
       {orders?.map((item) => {
-        return (
-          <div
-            key={item.id}
-            style={{
-              display: "flex",
-              gap: "20px",
-              border: "1px solid lightgray",
-              padding: "5px 10px",
-              borderRadius: "6px",
-            }}
-          >
-            <div className="d-f fd-c" style={{ lineHeight: "0px" }}>
-              <div className="d-f g-10">
-                <p>User: {item.user}</p>
-                <p>Total: ₹{item.totalAmount}</p>
-                <p>orderDate: {item.orderDate}</p>
-              </div>
-              <p>{item.description}</p>
-              <div className="d-f g-10">
-                <p>Status: {item.orderStatus}</p>
-                <p>Ship to: {item.shippingAddress}</p>
-              </div>
-            </div>
-          </div>
-        );
+        return <OrderItem item={item} />;
       })}
     </div>
   );

@@ -8,17 +8,24 @@ const SearchResults = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    let params = new URL(document.location).searchParams.get("cat");
-    if (params) {
-      params -= 11;
+    let cat = new URL(document.location).searchParams.get("cat") || "";
+    if (cat) {
+      cat -= 11;
       // https://bet.anirbandeb.cloud/login?r=match_close-pos-neg
       //  const redirectParam = params.split("_");
       //  let redirectLink = "";
       //  redirectParam.map((i) => (redirectLink += i + "/"));
       //  setRLink(redirectLink);
-      fetch("http://localhost:5454/api/products/category/" + params)
+      fetch("http://localhost:5454/api/products/category/" + cat)
         .then((res) => res.json())
         .then((data) => setProducts(data));
+    }
+    let query = new URL(document.location).searchParams.get("query") || "";
+    if (query) {
+      fetch("http://localhost:5454/api/products/name/" + query)
+        .then((res) => res.json())
+        .then((data) => setProducts(data))
+        .catch(() => console.log("No results"));
     }
   }, []);
 
@@ -26,6 +33,7 @@ const SearchResults = () => {
     <>
       <Navbar />
       {/* Filters */}
+      <p style={{ marginLeft: "20px", fontSize: "14px" }}>Search Results</p>
       <div style={{ display: "flex", gap: "20px", padding: "10px 45px" }}>
         {products.map((item, index) => {
           return (
@@ -61,6 +69,7 @@ const SearchResults = () => {
             </div>
           );
         })}
+        {!products.length && <h3>Oops.. No products found!</h3>}
       </div>
       <Footer />
     </>
