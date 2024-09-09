@@ -25,17 +25,6 @@ const Navbar = ({ option, onOptionChange }) => {
       >
         Orders
       </button>
-      <button
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "orange",
-          color: "white",
-          border: "none",
-        }}
-        onClick={() => onOptionChange("users")}
-      >
-        Users
-      </button>
     </nav>
   );
 };

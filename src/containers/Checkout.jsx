@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/Checkout.css";
 import Footer from "../components/Footer";
-// import RzpBtn from "../components/RzpBtn";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -40,7 +39,7 @@ const Checkout = () => {
       .then((data) => setUserInfo(data));
 
     return () => {
-      document.body.removeChild(script); // Cleanup the script when component unmounts
+      document.body.removeChild(script);
     };
   }, []);
 
@@ -60,7 +59,6 @@ const Checkout = () => {
       userId = -1;
     }
     let date = "";
-    // document.getElementById("razorpay-payment-button").style.display = "";
     await fetch("https://time.api.anirbandeb.cloud/zero")
       .then((res) => res.json())
       .then((data) => (date = data.date))
@@ -155,7 +153,14 @@ const Checkout = () => {
 
       <div className="shipping">
         <p>Hey, {userInfo.username}</p>
-        <p style={{ padding: "10px 20px", border: "1px solid orange" }}>
+        <p
+          style={{
+            padding: "10px 20px",
+            border: "1px solid orange",
+            backgroundColor:
+              addressSelected === "continue" ? "orange" : "white",
+          }}
+        >
           {userInfo.address}
         </p>
         <button
@@ -219,7 +224,6 @@ const Checkout = () => {
             marginLeft: "41vw",
           }}
         >
-          {/* <RzpBtn /> */}
           <div id="proceed-to-pay" className="pay-button">
             <button onClick={handlePayment} className="proceed">
               Proceed to pay
@@ -264,15 +268,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
-// function Tracking() {
-//   return (
-//     <script>
-//     (function(){
-//       var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
-//       if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
-//       s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
-//       rzp && rzp.init && rzp.init()}})();
-//   </script>
-//   );
-// }

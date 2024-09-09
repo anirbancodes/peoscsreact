@@ -7,7 +7,6 @@ const Main = ({ option }) => {
     <div>
       {option === "products" && <Products />}
       {option === "orders" && <Orders />}
-      {option === "users" && <div>User Management Content</div>}
     </div>
   );
 };

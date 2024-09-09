@@ -28,6 +28,7 @@ const Cart = () => {
                 stock: productData.stockQuantity,
                 price: productData.price,
                 name: productData.productName,
+                imageUrl: productData.imageUrl,
               }));
           });
 
@@ -91,6 +92,7 @@ const Cart = () => {
             qty={product.qty}
             onQuantityChange={updateQuantity}
             onRemove={removeItem}
+            imageUrl={product.imageUrl}
           />
         ))}
         <hr />

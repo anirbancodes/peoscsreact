@@ -6,7 +6,7 @@ const CartItem = ({
   name,
   stock,
   qty,
-
+  imageUrl,
   price,
   onQuantityChange,
   onRemove,
@@ -109,7 +109,7 @@ const CartItem = ({
   return (
     <div key={id} className="cart-item">
       <img
-        src="https://cdn.dummyjson.com/products/images/groceries/Green%20Chili%20Pepper/thumbnail.png"
+        src={imageUrl}
         alt={name}
         style={{ border: "1px solid white" }}
         width={120}
