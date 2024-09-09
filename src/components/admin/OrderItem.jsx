@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 
 const OrderItem = ({ item }) => {
-  const [status, setStatus] = useState("");
-  function handleChangeOrderStatus() {
-    fetch("http://localhost:5454/api/orders/" + item.id, {
+  const [status, setStatus] = useState(item.orderStatus);
+
+  function handleChangeOrderStatus(id, value) {
+    console.log("::", id);
+    fetch("http://localhost:5454/api/orders/" + id, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
       method: "PUT",
       body: JSON.stringify({
-        orderStatus: status,
+        orderStatus: value,
       }),
     })
       .then((response) => {
@@ -21,6 +23,7 @@ const OrderItem = ({ item }) => {
       })
       .then((data) => {
         console.log("Success:", data);
+        setStatus(value);
       })
       .catch((error) => {
         console.error("Error:", error.message);
@@ -52,19 +55,28 @@ const OrderItem = ({ item }) => {
           <p>Ship to: {item.shippingAddress}</p>
           <p>
             Status:
-            {item.orderStatus}
+            {status}
           </p>
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <p>Change status:</p>
         <div style={{ display: "flex", gap: "20px" }}>
-          <select onSelect={(e) => setStatus(e.target.value)}>
+          <select
+            style={{
+              padding: "5px 10px",
+              backgroundColor: "orangered",
+              color: "white",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+            onChange={(e) => handleChangeOrderStatus(item.id, e.target.value)}
+          >
             <option value="Processing">Processing</option>
             <option value="Shipped">Shipped</option>
             <option value="Delivererd">Delivererd</option>
           </select>
-          <button onClick={handleChangeOrderStatus(item.id)}>Update</button>
         </div>
       </div>
     </div>

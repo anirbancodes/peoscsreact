@@ -37,6 +37,7 @@ const OrderDetails = () => {
           acc[product.id] = {
             name: product.productName,
             desc: product.description,
+            imageUrl: product.imageUrl,
           };
           return acc;
         }, {});
@@ -93,7 +94,7 @@ const OrderDetails = () => {
         {items.map((item) => (
           <div key={item.id} className="order-item-details">
             <img
-              src="/path-to-product-image.png" // Use actual product image URLs if available
+              src={products[item.product]?.imageUrl} // Use actual product image URLs if available
               alt="Product"
               className="product-image"
             />
@@ -110,7 +111,7 @@ const OrderDetails = () => {
           <button disabled className="track-package-btn">
             Track package
           </button>
-          <button className="cancel-item-btn">Cancel items</button>
+          {/* <button className="cancel-item-btn">Cancel items</button> */}
         </div>
       </div>
     </div>

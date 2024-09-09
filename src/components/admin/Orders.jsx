@@ -23,7 +23,7 @@ const Orders = () => {
       }}
     >
       {orders?.map((item) => {
-        return <OrderItem item={item} />;
+        return <OrderItem key={item.id} item={item} />;
       })}
     </div>
   );

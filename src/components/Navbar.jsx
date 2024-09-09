@@ -43,7 +43,8 @@ const Navbar = () => {
             style={{
               border: "none",
               outline: "none",
-              backgroundColor: "white",
+              marginTop: "3px",
+              backgroundColor: userId ? "white" : "black",
               alignItems: "center",
             }}
             value={searchText}

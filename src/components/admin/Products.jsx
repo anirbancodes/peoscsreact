@@ -24,41 +24,71 @@ const Products = () => {
         onClick={() => {
           mode == "" ? setMode("create") : setMode("");
         }}
+        style={{
+          height: "30px",
+          backgroundColor: "orangered",
+          border: "none",
+          borderRadius: "6px",
+          color: "white",
+          cursor: "pointer",
+        }}
       >
         {!mode && <>Create new product</>}
         {mode && <>Cancel</>}
       </button>
 
       {mode && <CreateProduct />}
-      {!mode &&
-        products?.map((item) => {
-          return (
-            <div
-              key={item.id}
-              style={{
-                display: "flex",
-                gap: "20px",
-                border: "1px solid lightgray",
-                padding: "5px 10px",
-                borderRadius: "6px",
-              }}
-            >
-              <img src="" alt="photo" />
-              <div className="d-f fd-c" style={{ lineHeight: "0px" }}>
-                <div className="d-f g-10">
-                  <p>{item.productName}</p>
-                  <p>₹{item.price}</p>
-                  <p>CatID: {item.categoryId}</p>
-                </div>
-                <p>{item.description}</p>
-                <div className="d-f g-10">
-                  <p>Rating: {item.rating || 0}</p>
-                  <p>Stock: {item.stockQuantity}</p>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "10px",
+          justifyContent: "center",
+          backgroundColor: "#e5e5e5",
+          paddingTop: "20px",
+          borderRadius: "6px",
+        }}
+      >
+        {!mode &&
+          products?.map((item) => {
+            return (
+              <div
+                key={item.id}
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  border: "1px solid lightgray",
+                  padding: "5px 10px",
+                  borderRadius: "6px",
+                  height: "120px",
+                  width: "40vw",
+                  backgroundColor: "white",
+                }}
+              >
+                <img
+                  src={item.imageUrl}
+                  style={{ width: "100px" }}
+                  alt="photo"
+                />
+                <div className="d-f fd-c" style={{ lineHeight: "0px" }}>
+                  <div
+                    className="d-f g-10"
+                    style={{ display: "flex", flexWrap: "wrap" }}
+                  >
+                    <p>{item.productName}</p>
+                    <p>₹{item.price}</p>
+                    <p>CatID: {item.categoryId}</p>
+                  </div>
+                  <p>{item.description}</p>
+                  <div className="d-f g-10">
+                    <p>Rating: {item.rating || 0}</p>
+                    <p>Stock: {item.stockQuantity}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+      </div>
     </div>
   );
 };
@@ -70,10 +100,10 @@ function CreateProduct() {
     productName: "",
     description: "",
     categoryId: 0,
-    rating: "",
+    rating: 0,
     price: 0,
     stockQuantity: 0,
-    img: "",
+    imageUrl: "",
   });
   function handleAddProduct() {
     // e.preventDefault();
@@ -84,7 +114,7 @@ function CreateProduct() {
         "Content-Type": "application/json",
       },
       method: "POST",
-      body: details,
+      body: JSON.stringify(details),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -125,8 +155,10 @@ function CreateProduct() {
         placeholder="Price"
       />
       <input
-        onChange={(e) => setDetails({ ...details, rating: e.target.value })}
-        type="text"
+        onChange={(e) =>
+          setDetails({ ...details, rating: Number(e.target.value) })
+        }
+        type="number"
         placeholder="Rating"
       />
       <input
@@ -138,7 +170,7 @@ function CreateProduct() {
         placeholder="Description"
       />
       <input
-        onChange={(e) => setDetails({ ...details, img: e.target.value })}
+        onChange={(e) => setDetails({ ...details, imageUrl: e.target.value })}
         style={{ width: "420px" }}
         type="text"
         placeholder="img src uri"
